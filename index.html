@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Controle Financeiro - Via Varejo</title>
+  <meta charset="UTF-8" />
+  <!-- This gives the browser instructions on how to control the page's dimensions and scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- rel is how the file will be interpreted / style is how it will be presented -->
+  <link href="./assets/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="./assets/css/style-mobile.css" rel="stylesheet" type="text/css" />
+  <link href="./assets/css/style-tablet.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"/>
+  </head>
+
+<body>
+  <header>
+    <nav>
+      <div class="header-items">
+        <!-- header logo -->
+        <img id="logo" src="./assets/img/Ellipse 13.png" />
+        <!-- header title -->
+        <h1 id="header-title">Controle Financeiro</h1>
+      </div>
+      <!-- menu image -->
+      <button type="button" class="open-menu" onclick="toggleMenu()"><img id="img-menu" src="./assets/img/Shape.svg"></img></button>
+      <!-- navigable menu elements-->
+      <ul class="hamburguer-menu">
+        <button type="button" class="close-menu" onclick="toggleMenu()"><img id="close" src="./assets/img/close_vector.png"/></button>
+        <li><a id="menu-item1" href="/pagina1/1.html">Cadastro de transações</a></li>
+        <li><a id="menu-item2" href="/pagina2/2.html">Limpar dados</a></li>
+        <li><a id="menu-item3" href="/pagina3/3.html" ">Salvar no servidor</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- new transaction form -->
+  <div class="body-elements">
+    <form class="form-transaction" action=# method="GET" onsubmit="return validForm(this)">
+      <div id="form-title">Nova transação</div>
+      
+      <!-- drop down menu - transaction type -->
+      <div class="form-items">
+        <div class="transaction-type" for="transactiontype">Tipo de transação
+        <select id="transactiontype" name="typeTransaction">
+            <option value="selection" disabled selected>Selecione</option>
+            <option value="purchase">Compra</option>
+            <option value="sale">Venda de mercadoria</option>
+          </select>
+          <span class="msg-error msg-option"></span>
+        </div>
+
+        <!-- input with commodity name -->
+        <div class="form-input-comm">Nome da mercadoria
+          <input type="text" name="nameCommodity" id="commodity-name" placeholder="Input "></input>
+          <span class="msg-error msg-commodity"></span>
+        </div>
+            
+        <!-- input with commodity value -->
+        <div class="form-input-value">Valor
+          <input type="text" name="valueInput" id="value-input" maxlength="14" placeholder="R$ 0,00" onkeyup="valueFormated()"></input>
+          <span class="msg-error msg-value"></span>
+        </div>
+      </div>
+      <div class="button">
+        <button id="button-form" type="submit">Adicionar transação</button>
+      </div>
+    </form>
+
+    <!-- transaction statement table -->
+    <div class="table-statement">
+      <table id="table-container">
+        <div id="table-title">Extrato de transações</div>
+        <thead>
+          <tr id="tr_description">
+            <th></th>
+            <th id="commodity-description">Mercadoria</th>
+            <th id="value-description">Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+          <tr id="total">
+            <td></td>
+            <td id="total-title">Total</td>
+            <td id="value-total">R$ 12.909,99</td>
+          </tr>
+          <tr id="state">
+            <td colspan="3" id="stateInput">(LUCRO)</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+      
+    <!-- The defer attribute tells the browser to execute the script only when the HTML parsing is complete -->
+    <script src="./script/index.js" type="text/javascript"></script>
+  </body>
+
+</html>
